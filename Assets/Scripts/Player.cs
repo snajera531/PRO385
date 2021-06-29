@@ -16,19 +16,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        input.x = Input.GetAxis("Horizontal");
-        input.y = Input.GetAxis("Vertical");
-
-        transform.Translate(input * speed * Time.deltaTime);
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            OnFire();
-        }
-
         Gamepad gamepad = Gamepad.current;
         if (gamepad == null) return;
         input = gamepad.leftStick.ReadValue();
+
+        transform.Translate(input * speed * Time.deltaTime);
 
         if (gamepad.buttonSouth.wasPressedThisFrame)
         {
